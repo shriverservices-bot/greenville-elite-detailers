@@ -1,0 +1,8 @@
+
+{
+  "name": "Greenville Elite Detailers",
+  "description": "A premium, high-converting car detailing website featuring an AI-powered detailing advisor, service showcases, and interactive booking.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
