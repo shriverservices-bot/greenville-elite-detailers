@@ -5,6 +5,7 @@ export default {
         "./*.{js,ts,jsx,tsx}",
         "./components/**/*.{js,ts,jsx,tsx}",
         "./services/**/*.{js,ts,jsx,tsx}",
+        "!./node_modules",
     ],
     theme: {
         extend: {

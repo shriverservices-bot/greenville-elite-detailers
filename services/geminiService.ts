@@ -2,11 +2,25 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { AnalysisResult } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY || '' });
+// Initialize lazily to avoid top-level crashes if API key is missing
+let ai: GoogleGenAI | null = null;
+
+const getAIClient = () => {
+  if (!ai) {
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    if (!apiKey) {
+      console.warn("VITE_GEMINI_API_KEY is missing!");
+    }
+    ai = new GoogleGenAI({ apiKey: apiKey || 'dummy_key' }); // Prevent crash on empty key
+  }
+  return ai;
+};
 
 export const analyzeCarCondition = async (base64Image: string): Promise<AnalysisResult> => {
+  // Use the lazy client
+  const client = getAIClient();
   try {
-    const response = await ai.models.generateContent({
+    const response = await client.models.generateContent({
       model: "gemini-1.5-flash",
       contents: {
         parts: [
