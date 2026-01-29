@@ -1,14 +1,34 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Greenville Elite Detailers | Premium Car Care</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-zinc-950 text-zinc-100">
-    <div id="root"></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greenville Elite Detailers | Premium Car Care</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="bg-zinc-950 text-zinc-100">
+  <div id="root">
+    <div style="color: white; font-family: sans-serif; padding: 20px; text-align: center;">
+      <h1>Initializing Application...</h1>
+      <p>If this message stays for more than 5 seconds, the application failed to load.</p>
+    </div>
+  </div>
+  <script>
+    window.onerror = function (message, source, lineno, colno, error) {
+      var root = document.getElementById('root');
+      root.innerHTML += '<div style="color: red; background: rgba(0,0,0,0.8); padding: 10px; margin-top: 20px; border: 1px solid red;">' +
+        '<h3>Global Error caught:</h3>' +
+        '<p>' + message + '</p>' +
+        '<p>' + source + ':' + lineno + '</p>' +
+        '</div>';
+    };
+    console.log("Index.html loaded, waiting for module...");
+  </script>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>
